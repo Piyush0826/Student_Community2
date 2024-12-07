@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Student Community</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid white;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        header a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin: 2rem 0;
+            color: #007bff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .section h2 {
+            color: #007bff;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+        .section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .mission, .values {
+            background-color: #e9f7fe;
+            padding: 1rem;
+            border-left: 5px solid #007bff;
+            margin-bottom: 1rem;
+        }
+        .benefits-list {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #fff;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        /* New styles for the motto section */
+        .motto-section {
+            background-color: #fff5e5;
+            padding: 2rem;
+            border: 2px dashed #ffa500;
+            border-radius: 8px;
+            position: relative;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .motto-section::before {
+            content: '👉';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        .motto-section::after {
+            content: '👈';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        .motto-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>Student Community</h2>
+    <a href="{% url 'index' %}">Home</a>
+</header>
+
+<h1>About Us</h1>
+
+<div class="container">
+    <div class="motto-section">
+        <p class="motto-text">"Empowering Students Through Collaboration!"</p>
+    </div>
+
+    <div class="section">
+        <h2>Our Vision</h2>
+        <p>At Student Community, we envision a collaborative platform where students can connect, share knowledge, and grow together. Our goal is to create an inclusive environment that encourages learning, support, and friendship.</p>
+    </div>
+
+    <div class="section">
+        <h2>Our Mission</h2>
+        <div class="mission">
+            <p>To empower students through collaboration, providing tools and resources that enhance learning experiences and foster personal growth.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Our Core Values</h2>
+        <div class="values">
+            <p>We believe in:</p>
+            <ul class="benefits-list">
+                <li><strong>Collaboration:</strong> Working together to achieve common goals.</li>
+                <li><strong>Inclusivity:</strong> Ensuring everyone feels welcome and valued.</li>
+                <li><strong>Innovation:</strong> Embracing new ideas and technologies to improve learning.</li>
+                <li><strong>Empowerment:</strong> Providing resources and support for personal and academic growth.</li>
+                <li><strong>Community:</strong> Fostering a sense of belonging among students.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Why Choose Us?</h2>
+        <p>We provide a unique platform that combines real-time collaboration with a supportive community. Here’s what you can expect:</p>
+        <ul class="benefits-list">
+            <li>Access to collaborative tools like real-time document editing and discussion forums.</li>
+            <li>Opportunities to connect with peers for group projects and study sessions.</li>
+            <li>A platform for sharing resources, tips, and advice.</li>
+            <li>Real-time notifications to keep you updated on activities and discussions.</li>
+            <li>Engagement with a friendly chatbot that can assist you anytime.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Join Us Today!</h2>
+        <p>Become a part of our vibrant student community. Sign up now and start collaborating with peers who share your passion for learning!</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Student Community. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

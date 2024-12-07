@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Student Community</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .button {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .main-content {
+            margin-top: 5rem; /* Offset for fixed header */
+            text-align: center;
+            padding: 2rem;
+        }
+        .main-content h1 {
+            color: #333;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 2rem;
+        }
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #fff;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>Student Community</h2>
+    <nav>
+        <a href="{% url 'aboutus' %}">About Us</a>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'chat' %}">Chatbot</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'edit_profile' %}">Edit Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </nav>
+</header>
+
+<div class="main-content">
+    <h1>Welcome to Student Community</h1>
+    <img src="{% static 'images/d2.jpg' %}" style="width: 1500px; height: 480px;" class="d-block w-1000" alt="...">
+</div>
+
+<footer>
+    <p>&copy; 2024 Student Community. AA JAO AB HOGI PDHAII...</p>
+</footer>
+
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script>
+    function ProjectDetails() {
+        return React.createElement(
+            'div',
+            { id: 'project-details', style: { marginTop: '2rem', textAlign: 'center' } },
+            React.createElement('h2', null, 'Our Project Vision'),
+            React.createElement('p', null, 'The Student Community platform is designed to connect students with shared interests, collaborate in real-time, and share resources efficiently.'),
+            React.createElement('p', null, 'It features authentication, group discussions, a chatbot, and more to foster a supportive student ecosystem.')
+        );
+    }
+
+    ReactDOM.render(React.createElement(ProjectDetails), document.body.appendChild(document.createElement('div')));
+</script>
+
+</body>
+</html>

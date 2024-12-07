@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Community Dashboard</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #28a745; /* Green */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: #ff9800; /* Orange */
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .quick-links a {
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .quick-links a:hover {
+            background-color: #0056b3; /* Darker Blue */
+            transform: scale(1.05);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        ul li a {
+            color: #007bff; /* Link Blue */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover {
+            color: #0056b3; /* Darker Link Blue */
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .quick-links a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            ul li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, {{ user.username }}</h1>
+            <p>Explore your student community dashboard for the latest updates and resources!</p>
+        </header>
+
+        <section>
+            <h2>Quick Links</h2>
+            <div class="quick-links">
+                <a href="{% url 'index' %}">Go to Home</a>
+                <a href="{% url 'edit_profile' %}">Edit Profile</a>
+                <a href="{% url 'group_discussions' %}">Group Discussions</a>
+                <a href="{% url 'documents' %}">Document Collaboration</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Activity Feed</h2>
+            <p>Stay updated with the latest activities from your groups and friends.</p>
+            <ul>
+                <li>New document collaboration started by John.</li>
+                <li>Sarah posted in "Python Programming" group.</li>
+                <li>Your friend Emma commented on a discussion thread.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Suggested Groups</h2>
+            <p>Join groups based on your interests!</p>
+            <ul>
+                {% for group in groups %}
+                    <li><a href="{% url 'join_group' group.id %}">{{ group.name }}</a></li>
+                {% empty %}
+                    <li>No groups available.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Learning Resources</h2>
+            <p>Explore resources shared by the community.</p>
+            <ul>
+                {% for resource in resources %}
+                    <li><a href="{% url 'resource_detail' resource.id %}">{{ resource.title }}</a></li>
+                {% empty %}
+                    <li>No resources available.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Upcoming Events</h2>
+            <p>Don't miss out on these events!</p>
+            <ul>
+                {% for event in events %}
+                    <li>{{ event.title }} on {{ event.date }}</li>
+                {% empty %}
+                    <li>No upcoming events.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <footer>
+            <p>© 2024 Student Community Dashboard. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
